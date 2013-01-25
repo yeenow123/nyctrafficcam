@@ -1,3 +1,5 @@
 class LinkSpeed < ActiveRecord::Base
-  # attr_accessible :title, :body
+  belongs_to :link
+
+  validates :avg_travel_time, :only_integer => true
 end

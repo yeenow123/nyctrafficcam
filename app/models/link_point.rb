@@ -1,3 +1,5 @@
 class LinkPoint < ActiveRecord::Base
-  # attr_accessible :title, :body
+  belongs_to :link
+
+  validates_uniqueness_of :latitude, :scope => :longitude
 end
