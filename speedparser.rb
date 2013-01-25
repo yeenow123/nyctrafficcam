@@ -89,7 +89,7 @@ def update_speed_data
 	url = "http://207.251.86.229/nyc-links-cams/LinkSpeedQuery.txt"
 	conn = open(url)
 
-	columns = [:link_id, :speed, :traveltime, :datetime]
+	columns = [:link_id, :speed, :avg_travel_time, :date_time]
 	values = []
 	
 	CSV.parse(conn.read, :col_sep => "\t", :headers => true) do |field|
