@@ -2,13 +2,16 @@ source 'https://rubygems.org'
 
 gem 'rails', '3.2.9'
 
+gem 'execjs'
+gem 'therubyracer', :platforms => 'ruby'
+
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
 gem 'sqlite3'
 
-gem 'execjs'
-gem 'therubyracer', :platforms => 'ruby'
+gem 'gmaps4rails'
+gem 'activerecord-import'
 
 # Gems used only for assets and not required
 # in production environments by default.

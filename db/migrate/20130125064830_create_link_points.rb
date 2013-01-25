@@ -4,6 +4,7 @@ class CreateLinkPoints < ActiveRecord::Migration
       t.integer :link_id
       t.float :latitude
       t.float :longitude
+      t.boolean :gmaps
     end
   end
 end

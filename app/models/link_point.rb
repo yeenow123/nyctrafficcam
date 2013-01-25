@@ -1,5 +1,7 @@
 class LinkPoint < ActiveRecord::Base
-  belongs_to :link
 
-  validates_uniqueness_of :latitude, :scope => :longitude
+  acts_as_gmappable :process_geocoding => false
+
+  belongs_to :link, :foreign_key => 'link_id'
+
 end

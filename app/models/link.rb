@@ -1,8 +1,10 @@
 class Link < ActiveRecord::Base
-  has_many :link_points
+  has_many :link_points, :primary_key => 'link_id'
   has_many :link_speeds
 
-  validates :link_id, :uniqueness => true, 
+  validates :link_id, :presence => true, :uniqueness => true
+  validates :owner, :presence => true
+  validates :borough, :presence => true
+  validates :link_name, :presence => true
 
-  validates :link_id, :owner, :borough, :link_name, :presence => true
 end
