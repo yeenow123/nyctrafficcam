@@ -1,6 +1,11 @@
 class MapsController < ApplicationController
 	def index
-		@points = LinkPoint.all
+		@points = []
+
+		@links = Link.all
+		@links.each do |l|
+			l.link_points
+		end
 		@json = @points.to_gmaps4rails
 	end
 end
