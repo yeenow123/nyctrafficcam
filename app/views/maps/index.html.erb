@@ -1,3 +1,27 @@
-<%= gmaps( {
-		"polylines" => { "data" => @data }
-	}) %>
+<div id='header'>
+	<h1>NYC Real-Time Traffic Cam Map</h1>
+</div>
+
+<div id='container'>
+	<div id='content'>
+		<div class='column' id='right'>
+			<h2>Top Links (Highest Average Speed)</h2>
+		</div>
+
+		<div id='center'>
+
+		<%= gmaps( {
+				"polylines" => { "data" => @data }
+		}) %>
+
+		</div>
+
+
+	</div>
+</div>
+
+
+<div id='footer'>
+	<p>Map created by Yee-Ning Cheng</p>
+	<p>Data provided by: NYCDOT</p>
+</div>
