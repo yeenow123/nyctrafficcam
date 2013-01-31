@@ -1,5 +1,5 @@
 class LinkSpeed < ActiveRecord::Base
-  belongs_to :link
+  belongs_to :link, :primary_key => 'link_id'
 
   validates :avg_travel_time, :numericality => { :only_integer => true }
 

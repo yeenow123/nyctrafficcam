@@ -7,4 +7,6 @@ class Link < ActiveRecord::Base
   validates :borough, :presence => true
   validates :link_name, :presence => true
 
+  accepts_nested_attributes_for :link_speeds
+
 end

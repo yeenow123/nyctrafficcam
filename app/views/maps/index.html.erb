@@ -9,7 +9,8 @@
 			<ol>
 			<% @top_speeds.each do |s| %>
 				<li>
-					<p><%= s.speed %> mph</p>
+					<p><%= "#{s.link.link_name}" %></p>
+					<p><%= "#{s.speed} mph" %></p>
 				</li>
 			<% end %>
 			</ol>
