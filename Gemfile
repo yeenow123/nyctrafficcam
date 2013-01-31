@@ -12,6 +12,8 @@ gem 'sqlite3'
 
 gem 'gmaps4rails'
 gem 'activerecord-import'
+gem 'delayed_job_active_record'
+gem 'daemons'
 
 # Gems used only for assets and not required
 # in production environments by default.
