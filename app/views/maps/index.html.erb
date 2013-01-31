@@ -6,9 +6,9 @@
 	<div id='content'>
 		<div class='column' id='right'>
 			<h2>Top Links (Highest Average Speed)</h2>
-			<ol>
+			<ol id='topspeedlist'>
 			<% @top_speeds.each do |s| %>
-				<li>
+				<li class='topspeeditem'>
 					<p><%= "#{s.link.link_name}" %></p>
 					<p><%= "#{s.speed} mph" %></p>
 				</li>
@@ -33,3 +33,11 @@
 	<p>Map created by Yee-Ning Cheng</p>
 	<p>Data provided by: NYCDOT</p>
 </div>
+
+<script type='text/javascript'>
+$(document).ready(function() {
+	$("li.topspeeditem").click(function() {
+		alert('what up');
+	})
+})
+</script>

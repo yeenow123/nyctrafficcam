@@ -7,7 +7,7 @@ class BatchImportJob
 	run_every 1.hour
 
 	def display_name
-		"Batch Import Job"
+		"Batch Import Traffic Speed Data"
 	end
 
 	def perform		
