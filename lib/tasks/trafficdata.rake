@@ -4,6 +4,21 @@ require 'csv'
 require 'open-uri'
 
 task :populate_links => :environment do
+
+	# id = 0  INT
+	# speed = 1  FLOAT (MPH)
+	# traveltime = 2  INT (SECONDS)
+	# status = 3
+	# timedata = 4  DATETIME
+	# linkId = 5
+	# linkPoints = 6  FLOAT (LAT/LONG)
+	# EncodedPolyline = 7
+	# EncodedPolylineLvls = 8
+	# Owner = 9
+	# Transcom_id = 10
+	# Borough = 11
+	# LinkName = 12
+
 	def lat_long_array(line)
 		line.gsub!(/\n/, "")
 		line.gsub!(/\)\(/, " ")
@@ -69,58 +84,17 @@ task :populate_links => :environment do
 			
 		end
 
-		p values
-
 		LinkPoint.import columns, values
 	end
 
-	#populate_link_info
+	populate_link_info
 	populate_link_geodata
 	
 end
 
-task :get_speed_data => :environment do
 
-	# id = 0  INT
-	# speed = 1  FLOAT (MPH)
-	# traveltime = 2  INT (SECONDS)
-	# status = 3
-	# timedata = 4  DATETIME
-	# linkId = 5
-	# linkPoints = 6  FLOAT (LAT/LONG)
-	# EncodedPolyline = 7
-	# EncodedPolylineLvls = 8
-	# Owner = 9
-	# Transcom_id = 10
-	# Borough = 11
-	# LinkName = 12
 
-	def update_speed_data
-		url = "http://207.251.86.229/nyc-links-cams/LinkSpeedQuery.txt"
-		conn = open(url)
 
-		columns = [:link_id, :speed, :avg_travel_time, :date_time]
-		values = []
-		
-		CSV.parse(conn.read, :col_sep => "\t", :headers => true) do |field|
-			record = []
-
-			datetime = DateTime.strptime(field[4], "%m/%d/%Y %H:%M:%S").to_time
-
-			record.push(field[0].to_i)
-			record.push(field[1].to_f)
-			record.push(field[2].to_i)
-			record.push(datetime)	
-
-			values.push(record)
-		end
-
-		LinkSpeed.import columns, values
-	end
-
-	update_speed_data
-
-end
 
 
 
