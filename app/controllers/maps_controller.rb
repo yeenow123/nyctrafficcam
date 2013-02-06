@@ -1,5 +1,6 @@
 class MapsController < ApplicationController
 	def index
+
 		@top_speeds = LinkSpeed.top_ten_speeds
 		#ids 160 (linkpoint id is 3170, delete 3169) lat should be 40.797
 		#169 latitude should be: 40.80666
@@ -9,7 +10,13 @@ class MapsController < ApplicationController
 		end				
 					
 		@data = all_points.to_json	
-	
+
+		respond_to do |format|
+			format.html
+			format.js
+		end
+
 	end
+
 
 end

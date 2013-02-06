@@ -1,0 +1,7 @@
+$("#topspeedlist").html("")
+
+<% @top_speeds.each do |s| %>
+
+$("#topspeedlist").append("<%= escape_javascript(render(:partial => 'topspeed', :locals => { :s => s })) %>");
+
+<% end %>

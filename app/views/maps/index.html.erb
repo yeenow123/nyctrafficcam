@@ -8,13 +8,7 @@
 			<h2>Top Links (Highest Average Speed)</h2>
 			<ul id='topspeedlist'>
 			<% @top_speeds.each do |s| %>
-				<li class='topspeeditem' 
-					data-lat=<%= s.link.link_points.first.latitude%> 
-					data-lng=<%= s.link.link_points.first.longitude %> 
-				>
-					<a href='#'><%= "#{s.link.link_name}" %><br />
-					<%= "#{s.speed} mph" %></a>
-				</li>
+				<%= render :partial => "topspeed", :locals => { :s => s } %>
 			<% end %>
 			</ul>
 		</div>
@@ -31,6 +25,7 @@
 	</div>
 </div>
 
+<%= link_to 'Blah', :controller => 'maps', :action => 'index', :remote => true %>
 
 <div id='footer'>
 	<p>Map created by Yee-Ning Cheng</p>
@@ -40,22 +35,25 @@
 <script type='text/javascript'>
 
 $(document).ready(function() {
-	
-	$("li.topspeeditem a").click(function() {
+	var topspeeditem = $("li.topspeeditem")
+
+	topspeeditem.click(function() {
 		var myLatlng = new google.maps.LatLng($(this).data('lat'), $(this).data('lng'));
   		var mapOptions = {
 		    zoom: 10,
 		    center: myLatlng,
 		    mapTypeId: google.maps.MapTypeId.ROADMAP
   		}
-  	var map = new google.maps.Map(document.getElementById("map"), mapOptions);
+  		var map = new google.maps.Map(document.getElementById("map"), mapOptions);
 
-	var marker = new google.maps.Marker({
-	    position: myLatlng,
-	    map: map,
-	    title:"Hello World!"
-	 });
+		var marker = new google.maps.Marker({
+		    position: myLatlng,
+		    map: map,
+		    title: $(this).children("a").text()
+		 });
 
 	})
+
+
 })
 </script>
