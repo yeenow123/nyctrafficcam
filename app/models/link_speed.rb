@@ -3,5 +3,6 @@ class LinkSpeed < ActiveRecord::Base
 
   validates :avg_travel_time, :numericality => { :only_integer => true }
 
-  scope :top_ten_speeds, :order => "speed DESC", :limit => 10
+  scope :most_recent, :order => "created_at DESC", :limit => 195
+  scope :top_ten, :order => "speed DESC", :limit => 10
 end
