@@ -54,6 +54,26 @@ $(document).ready(function() {
 
 	})
 
+	function update() {
+		$.ajax({
+			url: "/", 
+			type: 'GET',
+			success: function(data) {
+				var x = $(data).find('#topspeedlist');
+				console.log(x);
+				$('#topspeedlist').html(x);
+				setTimeout(function() {
+					update();
+				}, 3000);
+			},
+			dataType: 'html'
+		});
+	}
+
+	setTimeout(function() {
+		update();
+	}, 2000);
+
 
 })
 </script>
