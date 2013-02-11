@@ -25,8 +25,6 @@
 	</div>
 </div>
 
-<%= link_to 'Blah', :controller => 'maps', :action => 'index', :remote => true %>
-
 <div id='footer'>
 	<p>Map created by Yee-Ning Cheng</p>
 	<p>Data provided by: NYCDOT</p>
@@ -35,15 +33,15 @@
 <script type='text/javascript'>
 
 $(document).ready(function() {
-	var topspeeditem = $("li.topspeeditem")
+	
 
-	topspeeditem.click(function() {
+	$("#right").delegate(".topspeeditem", "click", function() {
 		var myLatlng = new google.maps.LatLng($(this).data('lat'), $(this).data('lng'));
   		var mapOptions = {
 		    zoom: 10,
 		    center: myLatlng,
 		    mapTypeId: google.maps.MapTypeId.ROADMAP
-  		}
+  		};
   		var map = new google.maps.Map(document.getElementById("map"), mapOptions);
 
 		var marker = new google.maps.Marker({
@@ -59,12 +57,11 @@ $(document).ready(function() {
 			url: "/", 
 			type: 'GET',
 			success: function(data) {
-				var x = $(data).find('#topspeedlist');
-				console.log(x);
-				$('#topspeedlist').html(x);
+				var toptenspeeds = $(data).find('#topspeedlist');
+				$('#topspeedlist').html(toptenspeeds.children());
 				setTimeout(function() {
 					update();
-				}, 3000);
+				}, 30000);
 			},
 			dataType: 'html'
 		});
