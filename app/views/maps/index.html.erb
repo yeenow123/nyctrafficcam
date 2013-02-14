@@ -4,7 +4,7 @@
 
 <div id='container'>
 	<%= form_tag do %>
-		<%= text_field_tag "Search" %>
+		<%= text_field_tag "search" %>
 	<%- end %>
 	<div id='content'>
 		<div class='column' id='right'>
@@ -73,32 +73,28 @@ $(document).ready(function() {
 	setTimeout(function() {
 		update();
 	}, 30000);
+})
 
-
-	$(function fuseSearch() {
-		var links = [];
-		$.getJSON('/test', function(data) {
-			$.each(data, function(i, val) {
-				links.push(val);
-			})
-		});
-
-		var options = {
-			keys: ['link_name'],
-			id: 'borough',
-			threshold: 0.8
-		}
-	
-		var f = new Fuse(links, options);
-		
-		$('#Search').bind('keydown keypress', function() {
-			var that = $(this);
-			var result = f.search(that.val());
-			console.log(result);
-		});			
+$(function fuseSearch() {
+	var links = [];
+	$.getJSON('/', function(data) {
+		$.each(data, function(i, val) {
+			links.push(val);
+		})
 	});
-	
 
+	var options = {
+		keys: ['link_name'],
+		id: 'borough',
+		threshold: 0.8
+	}
+
+	var f = new Fuse(links, options);
+	
+	$('#search').bind('keydown keypress', function() {
+		var result = f.search($(this).val());
+		console.log(result);
+	});			
 })
 
 		
