@@ -14,8 +14,16 @@ class MapsController < ApplicationController
 		respond_to do |format|
 			format.html
 			format.js
+			format.json { render :json => Link.all }
 		end
 
+	end
+
+	def show
+		@links = Link.all
+		respond_to do |format|
+			format.json { render :json => @links.to_json } 
+		end
 	end
 
 

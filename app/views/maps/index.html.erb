@@ -3,6 +3,9 @@
 </div>
 
 <div id='container'>
+	<%= form_tag do %>
+		<%= text_field_tag "Search" %>
+	<%- end %>
 	<div id='content'>
 		<div class='column' id='right'>
 			<h2>Top Links (Highest Average Speed)</h2>
@@ -69,8 +72,34 @@ $(document).ready(function() {
 
 	setTimeout(function() {
 		update();
-	}, 2000);
+	}, 30000);
 
+
+	$(function fuseSearch() {
+		var links = [];
+		$.getJSON('/test', function(data) {
+			$.each(data, function(i, val) {
+				links.push(val);
+			})
+		});
+
+		var options = {
+			keys: ['link_name'],
+			id: 'borough',
+			threshold: 0.8
+		}
+	
+		var f = new Fuse(links, options);
+		
+		$('#Search').bind('keydown keypress', function() {
+			var that = $(this);
+			var result = f.search(that.val());
+			console.log(result);
+		});			
+	});
+	
 
 })
+
+		
 </script>
