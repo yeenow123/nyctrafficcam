@@ -1,4 +1,4 @@
-source 'https://rubygems.org'
+source 'http://rubygems.org'
 
 gem 'rails', '3.2.9'
 
@@ -8,12 +8,11 @@ gem 'therubyracer', :platforms => 'ruby'
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
-gem 'sqlite3'
-
 gem 'gmaps4rails'
 gem 'activerecord-import'
 gem 'delayed_job_active_record'
 gem 'daemons'
+gem 'mysql2'
 
 # Gems used only for assets and not required
 # in production environments by default.
