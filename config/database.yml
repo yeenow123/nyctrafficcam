@@ -22,6 +22,10 @@ test:
   timeout: 5000
 
 production:
-  adapter: sqlite
+  adapter: mysql2
   database: nyc_production
   pool: 5
+  timeout: 5000
+  username: yee-ning
+  password: password
+  socket: /var/run/mysqld/mysqld.sock
